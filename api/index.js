@@ -1,17 +1,23 @@
 const request = require('request-promise')
 
-const login = require('./login')
-const add2Cart = require('./add2Cart')
-const getCartInfo = require('./getCartInfo')
-const order = require('./order')
-
 function API () {
   this._jar = request.jar()
+  this._request = request.defaults({
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    },
+    jar: this._jar
+  })
 }
 
-API.prototype.login = login
-API.prototype.add2Cart = add2Cart
-API.prototype.getCartInfo = getCartInfo
-API.prototype.order = order
+const apis = [
+  'login',
+  'add2Cart',
+  'getCartInfo',
+  'order'
+]
+
+apis.forEach((api) => (API.prototype[api] = require('./' + api)))
 
 module.exports = API

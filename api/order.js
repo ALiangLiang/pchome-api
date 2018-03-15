@@ -1,20 +1,14 @@
-const request = require('request-promise')
 const CryptoJS = require('crypto-js')
 
 require('./../lib/jCryption.js')
 const $ = global.$
 
 const order = async function (opt) {
-  console.log('test')
   try {
-    const res = await request({
+    const res = await this._request({
       url: 'https://ecssl.pchome.com.tw/sys/cflow/api/getPK',
       method: 'post',
-      json: true,
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
-      },
-      jar: this._jar
+      json: true
     })
     const AK = CryptoJS.AES.encrypt(Math.floor((Math.random() * 1000000) + 1).toString(), (new Date()).getTime().toString()) + ''
     $.jCryption.crypt.setKey(res.PK)
@@ -66,27 +60,20 @@ const order = async function (opt) {
     const enToken = enc(res.Token)
     enFrmData.enAK = enAK
     enFrmData.Token = enToken
-    console.log(enFrmData)
 
     if (opt.test) {
+      console.log(enFrmData)
       return {}
     }
 
-    const result = await request({
+    const result = await this._request({
       url: 'https://ecssl.pchome.com.tw/sys/cflow/api/BigCar/BIGCAR/OrderSubmit',
-      qs: {
-        q: Math.random().toString(36).substring(2, 12)
-      },
+      qs: { q: Math.random().toString(36).substring(2, 12) },
       method: 'post',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
-      },
       formData: {
         frmData: JSON.stringify(enFrmData),
         CouponInfo: '{"actData":[],"prodCouponData":[]}'
-      },
-      jar: this._jar
+      }
     })
 
     return JSON.parse(result)
