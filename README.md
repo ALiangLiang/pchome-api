@@ -1,6 +1,6 @@
-# (非官方 Official) PChome API
+# (非官方) PChome API
 
-可以透過 API 來達到自動訂購。
+一套 Nodejs Module，可以透過 API 來達到自動訂購。
 
 ## 簡介
 
