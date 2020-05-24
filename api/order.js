@@ -8,7 +8,7 @@ const order = async function (opt) {
     const res = await this._request({
       url: 'https://ecssl.pchome.com.tw/sys/cflow/api/getPK',
       method: 'post',
-      json: true,
+      json: true
     })
     const AK = CryptoJS.AES.encrypt(Math.floor((Math.random() * 1000000) + 1).toString(), (new Date()).getTime().toString()) + ''
     $.jCryption.crypt.setKey(res.PK)

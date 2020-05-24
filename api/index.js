@@ -1,5 +1,5 @@
 const request = require('request-promise')
-const tough = require('tough-cookie');
+const tough = require('tough-cookie')
 
 function API (cookies) {
   // 初始化 cookie jar
@@ -16,7 +16,7 @@ function API (cookies) {
       path: '/',
       secure: false,
       session: false,
-      value: cookieValue,
+      value: cookieValue
     })
     this._jar.setCookie(ck, 'https://24h.pchome.com.tw/')
   })

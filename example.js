@@ -35,7 +35,7 @@ async function main () {
     recZip: '30010',
     recAddress: '新竹市東區大學路1001號'
   })
-  
+
   if (result.status === 'ERR') {
     throw new Error(result.msg)
   }
