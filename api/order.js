@@ -8,7 +8,7 @@ const order = async function (opt) {
     const res = await this._request({
       url: 'https://ecssl.pchome.com.tw/sys/cflow/api/getPK',
       method: 'post',
-      json: true
+      json: true,
     })
     const AK = CryptoJS.AES.encrypt(Math.floor((Math.random() * 1000000) + 1).toString(), (new Date()).getTime().toString()) + ''
     $.jCryption.crypt.setKey(res.PK)
@@ -24,11 +24,11 @@ const order = async function (opt) {
       'ShowCusName': 'N', // 收貨地址顯示購買人姓名。
       'ContactNo': '',
       'isSyncCust': 'N',
-      'RecName': opt.RecName, // 收貨人中文姓名。
+      'RecName': opt.recName, // 收貨人中文姓名。
       'RecTel': '', // 收貨人連絡電話 - 市話。
-      'RecMobile': opt.RecMobile, // 收貨人連絡電話 - 手機。
-      'RecZip': opt.RecZip, // 收貨人郵遞區號。
-      'RecAddress': opt.RecAddress, // 收貨人地址。
+      'RecMobile': opt.recMobile, // 收貨人連絡電話 - 手機。
+      'RecZip': opt.recZip, // 收貨人郵遞區號。
+      'RecAddress': opt.recAddress, // 收貨人地址。
       'AddContact': 'N', // 資料加入收貨人通訊錄。
       'ConfirmIsLand': 'N',
       'RecMail': '',
@@ -60,11 +60,6 @@ const order = async function (opt) {
     const enToken = enc(res.Token)
     enFrmData.enAK = enAK
     enFrmData.Token = enToken
-
-    if (opt.test) {
-      console.log(enFrmData)
-      return {}
-    }
 
     const result = await this._request({
       url: 'https://ecssl.pchome.com.tw/sys/cflow/api/BigCar/BIGCAR/OrderSubmit',

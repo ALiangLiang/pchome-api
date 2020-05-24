@@ -1,7 +1,26 @@
 const request = require('request-promise')
+const tough = require('tough-cookie');
 
-function API () {
+function API (cookies) {
+  // 初始化 cookie jar
   this._jar = request.jar()
+
+  // 設置 cookies
+  Object.keys(cookies).forEach((cookieKey) => {
+    const cookieValue = cookies[cookieKey]
+    const ck = tough.Cookie.fromJSON({
+      domain: 'pchome.com.tw',
+      hostOnly: false,
+      httpOnly: true,
+      key: cookieKey,
+      path: '/',
+      secure: false,
+      session: false,
+      value: cookieValue,
+    })
+    this._jar.setCookie(ck, 'https://24h.pchome.com.tw/')
+  })
+
   this._request = request.defaults({
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -12,7 +31,7 @@ function API () {
 }
 
 const apis = [
-  'login',
+  'snapup',
   'add2Cart',
   'getCartInfo',
   'order'
