@@ -1,5 +1,9 @@
 # (非官方) PChome API
 
+![npm](https://img.shields.io/npm/v/pchome-api)
+![NPM](https://img.shields.io/npm/l/pchome-api)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ALiangLiang/pchome-api/Node.js-CI)
+
 一套 Nodejs Package，可以透過 API 來完成自動訂購。
 
 ## 簡介
@@ -17,6 +21,10 @@
       目前只支援貨到付款，倘若目前訂單不支援貨到付款則無法使用。(例如訂單中的貨物從不同倉庫發貨的情況)
 
 ## 使用說明
+
+```shell
+npm install pchome-api
+```
 
 - 因為懶得寫，各位就直接參考 [example.js](example.js) 吧。
 - PCHome 採用 Google reCaptcha 來保護它的驗證程序，所以目前只能手動登入並設定 cookies。
