@@ -24,9 +24,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - env:
+    - run: npm ci
+    - run: npm test
+      env:
         PROD_ID: DGBJDE-1900AB40Y-000
         COOKIE_ECC: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.1993996800
         COOKIE_COOKIE_ECWEBSESS: xxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.1993996800
-    - run: npm ci
-    - run: npm test
