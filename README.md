@@ -18,9 +18,9 @@
 
 ## 使用說明
 
-> 因為 PCHome 採用 Google reCaptcha 來保護它的驗證程序，所以目前只能手動登入並設定 cookies。
-
-因為懶得寫，各位就直接參考 [example.js](example.js) 吧
+- 因為懶得寫，各位就直接參考 [example.js](example.js) 吧。
+- PCHome 採用 Google reCaptcha 來保護它的驗證程序，所以目前只能手動登入並設定 cookies。
+- PCHome 在面對高頻率請求有流量管制，所以建議不要過於積極的發送請求，不然會有暫時性的 403 forbidden，如果有測試出最佳的請求頻率，歡迎發 ISSUE。
 
 ## 聲明
 
