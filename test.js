@@ -29,4 +29,4 @@ async function test () {
    */
 }
 
-test()
+test().catch(() => process.exit(1))
