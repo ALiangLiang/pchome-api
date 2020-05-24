@@ -29,6 +29,6 @@ jobs:
     - run: npm ci
     - run: npm test
       env:
-        PROD_ID: DGBJDE-1900AB40Y-000
+        PROD_ID: DBAB01-A05738524-000
         COOKIE_ECC: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.1993996800
         COOKIE_COOKIE_ECWEBSESS: xxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.1993996800

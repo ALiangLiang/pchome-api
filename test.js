@@ -11,12 +11,7 @@ async function test () {
   })
 
   // 在加入購物車前，必須先呼叫這支 API，來取得產品狀況
-  let snapupResult
-  try {
-    snapupResult = await api.snapup(productionId)
-  } catch (err) {
-    assert(['OK', 'ProdLocked'].includes(snapupResult.Status))
-  }
+  const snapupResult = await api.snapup(productionId)
 
   // 加入購物車
   const add2CartResult = await api.add2Cart(productionId, snapupResult, 1)
