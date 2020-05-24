@@ -1,7 +1,7 @@
 const API = require('./api')
 const config = require('./config')
 
-const productionId = process.env.PROD_ID || 'DGBJCB-A900AMOHH-000'
+const productionId = process.env.PROD_ID || config.prodId
 
 async function main () {
   // 設定 cookie
@@ -14,7 +14,7 @@ async function main () {
   const snapupResult = await api.snapup(productionId)
 
   // 加入購物車
-  const addCartResult = await api.add2Cart(productionId, snapupResult, 1)
+  await api.add2Cart(productionId, snapupResult, 1)
 
   // 非必要流程，可以用來確認目前購物車的狀況、運費、支援的配送方式等...
   const res = await api.getCartInfo()
