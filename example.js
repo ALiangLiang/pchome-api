@@ -1,7 +1,7 @@
 const API = require('./api')
 const config = require('./config')
 
-const productionId = process.env.PROD_ID || config.prodId
+const productId = process.env.PROD_ID || config.prodId
 
 async function main () {
   // 設定 cookie
@@ -11,10 +11,10 @@ async function main () {
   const api = new API(cookies)
 
   // 在加入購物車前，必須先呼叫這支 API，來取得產品狀況
-  const snapupResult = await api.snapup(productionId)
+  const snapupResult = await api.snapup(productId)
 
   // 加入購物車
-  await api.add2Cart(productionId, snapupResult, 1)
+  await api.add2Cart(productId, snapupResult, 1)
 
   // 非必要流程，可以用來確認目前購物車的狀況、運費、支援的配送方式等...
   const res = await api.getCartInfo()
