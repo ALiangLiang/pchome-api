@@ -25,6 +25,7 @@ const apis = [
   'snapup',
   'add2Cart',
   'getCartInfo',
+  'prodCouponInfo',
   'order'
 ]
 

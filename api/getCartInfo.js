@@ -1,11 +1,9 @@
-const getCartInfo = async function () {
+const getCartInfo = async function (formData) {
   const res = await this._request({
-    url: 'https://ecssl.pchome.com.tw/sys/cflow/api/BigCar/BIGCAR/ItemList',
+    url: 'https://ecssl.pchome.com.tw/sys/cflow/fsapi/BigCar/BIGCAR/ItemList',
     method: 'post',
     json: true,
-    formData: {
-      data: `CouponInfo:{"prodCouponData":[]}`
-    }
+    formData
   })
   return res
 }

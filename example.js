@@ -17,7 +17,15 @@ async function main () {
   await api.add2Cart(productId, snapupResult, 1)
 
   // 非必要流程，可以用來確認目前購物車的狀況、運費、支援的配送方式等...
-  const res = await api.getCartInfo()
+  const primePriceInfo = (await api.prodCouponInfo())
+    .ProdIDs.map((id) => ({
+      ProdId: id,
+      PrimeInfo:{}
+    }))
+  const res = await api.getCartInfo({
+    CouponInfo: JSON.stringify({ prodCouponData: [] }),
+    PrimePriceInfo: JSON.stringify(primePriceInfo)
+  })
   console.log((res.shoppingFee) ? '要運費' : '免運費')
   console.log((res.payment.COD.status === 'Y') ? '可貨到付款' : '不可貨到付款')
   if (res.shoppingFee /* 需要運費 */ || res.payment.COD.status === 'N' /* 無法貨到付款 */) {
