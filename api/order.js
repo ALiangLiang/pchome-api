@@ -6,7 +6,7 @@ const $ = global.$
 const order = async function (opt) {
   try {
     const res = await this._request({
-      url: 'https://ecssl.pchome.com.tw/sys/cflow/api/getPK',
+      url: 'https://ecssl.pchome.com.tw/sys/cflow/fsapi/getPK',
       method: 'post',
       json: true
     })
@@ -62,7 +62,7 @@ const order = async function (opt) {
     enFrmData.Token = enToken
 
     const result = await this._request({
-      url: 'https://ecssl.pchome.com.tw/sys/cflow/api/BigCar/BIGCAR/OrderSubmit',
+      url: 'https://ecssl.pchome.com.tw/sys/cflow/fsapi/BigCar/BIGCAR/OrderSubmit',
       qs: { q: Math.random().toString(36).substring(2, 12) },
       method: 'post',
       formData: {
