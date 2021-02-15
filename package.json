@@ -1,7 +1,7 @@
 {
   "name": "pchome-api",
   "description": "PCHOME 的非官方 API 專案。",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "ALiangLiang",
   "repository": {
     "type": "git",
