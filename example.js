@@ -34,6 +34,7 @@ async function main () {
 
   // 送出訂單
   const result = await api.order({
+    payWay: 'COD' || 'ATM' || 'IBO', // COD 為貨到付款、ATM 為 ATM 付款、IBO 為 ibon 付款
     cusName: 'ALiangLiang',
     cusMobile: '0987654321',
     cusZip: '30010',
